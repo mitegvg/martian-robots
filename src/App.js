@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button, Input } from 'reactstrap';
 import logo from './logo.svg';
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.css';
@@ -75,33 +75,37 @@ class App extends Component {
           <h1 className="App-title">Welcome to Mars</h1>
         </header>
         <Container>
-          <Col xs="6">
-          </Col>
+        <Row>
           <Col xs="6">
           <div className="world-form-container">
+          <br/>
             <p >
-              <input value={this.state.world} onChange={this.handleChangeWorld}/>
+              <Input placeholder="X,Y coordinates of the north-east corner" value={this.state.world} onChange={this.handleChangeWorld}/>
             </p>
             <p>
-              <button onClick={this.handleSetWorld}>Set World Margins</button>
+              <Button color="primary" onClick={this.handleSetWorld}>Set World Margins</Button>
             </p>
           </div>
           <div className="commands-form-container">
             <p >
-              <input value={this.state.commandFirst} onChange={this.handleChangeCommandFirst}/>
+              <Input placeholder="Initial position of robot (Use uppercase for direction)" value={this.state.commandFirst} onChange={this.handleChangeCommandFirst}/>
             </p>
             <p>
-              <input value={this.state.commandSecond} onChange={this.handleChangeCommandSecond}/>
+              <Input placeholder="Commands for robot (Use uppercase) " value={this.state.commandSecond} onChange={this.handleChangeCommandSecond}/>
             </p>
             <p>
-              <button onClick={this.handleSendCommand}>Send command</button>
+              <Button  color="primary" onClick={this.handleSendCommand}>Send command</Button>
             </p>
           </div>
+          </Col>
+          <Col xs="6">
           <div id="output-container" className="output-container">
+          <br/>
             <h4>Output</h4>
             {outputLines}
           </div>
           </Col>
+          </Row>
         </Container>
       </div>
     );
